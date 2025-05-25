@@ -1,0 +1,74 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.cartItems {
+  margin-bottom: 20px;
+}
+.cartItem {
+  display: flex;
+  gap: 15px;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+.cartImage {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+.cartDetails {
+  flex: 1;
+}
+.qtyInput {
+  width: 60px;
+  margin: 5px 0;
+}
+.removeBtn {
+  margin-top: 5px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.textarea {
+  height: 80px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.paymentOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.icon {
+  width: 100px;
+  margin-right: 6px;
+}
+.total {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.submitBtn {
+  padding: 10px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.center {
+  text-align: center;
+  margin: 50px 0;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.phoneInput {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
