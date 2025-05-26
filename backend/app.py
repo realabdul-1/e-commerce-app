@@ -10,7 +10,8 @@ env_path = Path('.') / '.env'
 load_dotenv(dotenv_path=env_path)
 
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "https://e-commerce-app-navy-tau.vercel.app/"}})
+CORS(app, resources={r"/api/*": {"origins": "*"}})  # Allow all origins for testing
+
 
 def get_db_connection():
     return psycopg2.connect(
@@ -19,7 +20,7 @@ def get_db_connection():
         user=os.environ.get("DB_USER"),
         password=os.environ.get("DB_PASS"),
         port=os.environ.get("DB_PORT", 5432),
-        sslmode='prefer'
+        sslmode='require'
     )
 
 @app.route('/products/<int:id>', methods=['GET'])
