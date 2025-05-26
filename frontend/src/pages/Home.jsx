@@ -10,7 +10,7 @@ export default function Home() {
   const [sortOpt, setSortOpt] = useState("default");
 
   useEffect(() => {
-    axios.get("/api/products")
+    axios.get("https://e-commerce-app-navy-tau.vercel.app/api/products")
       .then(res => {
         const uniqueProducts = Array.from(new Map(res.data.map(p => [p.id, p])).values());
         setProducts(

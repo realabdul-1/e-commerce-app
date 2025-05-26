@@ -13,7 +13,7 @@ export default function ProductList() {
 
   useEffect(() => {
     axios
-      .get("/api/products")
+      .get("https://e-commerce-app-navy-tau.vercel.app/api/products")
       .then((res) => {
         setProducts(res.data);
         setFiltered(res.data);
