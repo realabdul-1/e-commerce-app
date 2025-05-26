@@ -1,18 +1,21 @@
+// vercel.json
 {
-  "version": 2,
+  "version":     2,
   "builds": [
-    { "src": "backend/app.py",       "use": "@vercel/python" },
-    {
-      "src":  "frontend/package.json",
-      "use":  "@vercel/static-build",
-      "config": { "distDir": "build" }
-    }
+    { "src": "backend/app.py",       "use": "@vercel/python"       },
+    { "src": "frontend/package.json","use": "@vercel/static-build" }
   ],
   "routes": [
-    { "src": "/api/(.*)",    "dest": "/backend/app.py" },
+    { "src": "/api/(.*)", "dest": "/backend/app.py" },
+
+    { "src": "/manifest.json",        "dest": "/frontend/manifest.json" },
+    { "src": "/asset-manifest.json",  "dest": "/frontend/asset-manifest.json" },
+    { "src": "/favicon.ico",          "dest": "/frontend/favicon.ico" },
+    { "src": "/robots.txt",           "dest": "/frontend/robots.txt" },
+    { "src": "/static/(.*)",          "dest": "/frontend/static/$1" },
 
     { "handle": "filesystem" },
 
-    { "src": "/(.*)",        "dest": "/frontend/index.html" }
+    { "src": "/(.*)", "dest": "/frontend/index.html" }
   ]
 }
