@@ -10,7 +10,11 @@
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/backend/app.py" },
-    { "src": "/static/(.*)", "dest": "/static/$1" },
-    { "src": "/(.*)", "dest": "/index.html" }
+    
+    { "src": "/static/(.*)", "dest": "/frontend/build/static/$1" },
+    { "src": "/asset-manifest.json", "dest": "/frontend/build/asset-manifest.json" },
+    { "src": "/manifest.json", "dest": "/frontend/build/manifest.json" },
+    
+    { "src": "/(.*)", "dest": "/frontend/build/index.html" }
   ]
 }
