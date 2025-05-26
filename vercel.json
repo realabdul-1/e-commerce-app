@@ -5,12 +5,12 @@
     { 
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
-      "config": { "outputDirectory": "build" } 
+      "config": { "outputDirectory": "../frontend_build" }
     }
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/backend/app.py" },
-    { "src": "/static/(.*)", "dest": "/static/$1" }, 
-    { "src": "/(.*)", "dest": "/index.html" }        
+    { "src": "/static/(.*)", "dest": "/frontend/static/$1" },
+    { "src": "/(.*)", "dest": "/frontend/index.html" }
   ]
 }
