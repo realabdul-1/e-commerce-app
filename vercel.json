@@ -1,20 +1,21 @@
 {
-  "version":     2,
+  "version": 2,
   "builds": [
-    { "src": "backend/app.py",       "use": "@vercel/python"       },
-    { "src": "frontend/package.json","use": "@vercel/static-build" }
+    { "src": "backend/app.py", "use": "@vercel/python" },
+    { 
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": { "outputDirectory": "build" }
+    }
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/backend/app.py" },
-
-    { "src": "/manifest.json",        "dest": "/frontend/manifest.json" },
-    { "src": "/asset-manifest.json",  "dest": "/frontend/asset-manifest.json" },
-    { "src": "/favicon.ico",          "dest": "/frontend/favicon.ico" },
-    { "src": "/robots.txt",           "dest": "/frontend/robots.txt" },
-    { "src": "/static/(.*)",          "dest": "/frontend/static/$1" },
-
+    { "src": "/manifest.json", "dest": "/frontend/build/manifest.json" },
+    { "src": "/asset-manifest.json", "dest": "/frontend/build/asset-manifest.json" },
+    { "src": "/favicon.ico", "dest": "/frontend/build/favicon.ico" },
+    { "src": "/robots.txt", "dest": "/frontend/build/robots.txt" },
+    { "src": "/static/(.*)", "dest": "/frontend/build/static/$1" },
     { "handle": "filesystem" },
-
-    { "src": "/(.*)", "dest": "/frontend/index.html" }
+    { "src": "/(.*)", "dest": "/frontend/build/index.html" }
   ]
 }
