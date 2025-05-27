@@ -4,7 +4,7 @@
     { 
       "src": "backend/app.py",
       "use": "@vercel/python",
-      "config": {
+      "config": { 
         "maxLambdaSize": "15mb",
         "includeFiles": "backend/**"
       }
@@ -21,9 +21,6 @@
     { "src": "/api/(.*)", "dest": "/backend/app.py" },
     { "src": "/static/(.*)", "dest": "/frontend/static/$1" },
     { "src": "/products/(.*)", "dest": "/frontend/products/$1" },
-    { "src": "/asset-manifest.json", "dest": "/frontend/asset-manifest.json" },
-    { "src": "/manifest.json", "dest": "/frontend/manifest.json" },
-    { "src": "/favicon.ico", "dest": "/frontend/favicon.ico" },
     { "src": "/(.*)", "dest": "/frontend/index.html" }
   ]
 }
