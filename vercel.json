@@ -4,10 +4,7 @@
     {
       "src": "backend/app.py",
       "use": "@vercel/python",
-       "config": {
-      "maxLambdaSize": "50mb",
-      "installCommand": "pip install -r backend/requirements.txt"
-    }
+      "config": { "maxLambdaSize": "50mb" }
     },
     {
       "src": "frontend/package.json",
@@ -18,15 +15,8 @@
   "routes": [
     { "src": "/api/(.*)", "dest": "/backend/app.py" },
 
-    { "src": "/static/(.*)",          "dest": "/frontend/build/static/$1" },
-    { "src": "/favicon.ico",          "dest": "/frontend/build/favicon.ico" },
-    { "src": "/manifest.json",        "dest": "/frontend/build/manifest.json" },
-    { "src": "/robots.txt",           "dest": "/frontend/build/robots.txt" },
-    { "src": "/logo192.png",          "dest": "/frontend/build/logo192.png" },
-    { "src": "/logo512.png",          "dest": "/frontend/build/logo512.png" },
-
     { "handle": "filesystem" },
 
-    { "src": "/(.*)",                 "dest": "/frontend/build/index.html" }
+    { "src": "/(.*)", "dest": "/frontend/index.html" }
   ]
 }
