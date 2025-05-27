@@ -17,6 +17,7 @@ CORS(app, resources={
     r"/api/*": {
         "origins": [
             "https://e-commerce-app-navy-tau.vercel.app",
+            "http://127.0.0.1:3000", 
             "http://localhost:3000"
         ]
     }
@@ -220,4 +221,4 @@ def health_check():
 # Vercel serverless compatibility
 handler = app
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
