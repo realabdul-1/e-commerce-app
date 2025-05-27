@@ -13,17 +13,16 @@
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "outputDirectory": "frontend"
+        "outputDirectory": "frontend/build"
       }
     }
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/backend/app.py" },
-    { "src": "/static/(.*)", "dest": "/frontend/static/$1" },
+    { "src": "/static/(.*)", "dest": "/frontend/build/static/$1" },
     { "src": "/products/(.*)", "dest": "/frontend/products/$1" },
-    { "src": "/asset-manifest.json", "dest": "/frontend/asset-manifest.json" },
-    { "src": "/manifest.json", "dest": "/frontend/manifest.json" },
-    { "src": "/favicon.ico", "dest": "/frontend/favicon.ico" },
-    { "src": "/(.*)", "dest": "/frontend/index.html" }
+    { "src": "/asset-manifest.json", "dest": "/frontend/build/asset-manifest.json" },
+    { "src": "/favicon.ico", "dest": "/frontend/build/favicon.ico" },
+    { "src": "/(.*)", "dest": "/frontend/build/index.html" }
   ]
 }
