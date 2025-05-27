@@ -28,24 +28,21 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 def get_db_connection():
-    """Create and return a secure database connection."""
+    """Create and return a secure Neon DB connection."""
     try:
         conn = pg8000.connect(
-        host=os.getenv("DB_HOST"),
-        database=os.getenv("DB_NAME"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASS"),
-        port=int(os.getenv("DB_PORT", 5432)),
-        ssl=True,
-        timeout=10
-    )
+            host=os.getenv("DB_HOST"),
+            database=os.getenv("DB_NAME"),
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASS"),
+            port=int(os.getenv("DB_PORT", 5432)),
+            ssl_context=True,  # SSL context required for Neon
+            timeout=10
+        )
         logger.info("Successfully connected to database")
         return conn
-    except psycopg2.OperationalError as e:
-        logger.error(f"Database connection failed: {str(e)}")
-        raise
     except Exception as e:
-        logger.error(f"Unexpected connection error: {str(e)}")
+        logger.error(f"Connection failed: {str(e)}")
         raise
 
 @app.errorhandler(404)
