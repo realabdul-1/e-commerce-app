@@ -9,8 +9,13 @@ export default function Home() {
   const [products, setProducts] = useState([]);
   const [sortOpt, setSortOpt] = useState("default");
 
+  const API_BASE =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:5000'
+    : 'https://your-backend.onrender.com';
+
   useEffect(() => {
-    axios.get("https://e-commerce-app-navy-tau.vercel.app/api/products")
+    axios.get(`${API_BASE}/api/products`)
       .then(res => {
         const uniqueProducts = Array.from(new Map(res.data.map(p => [p.id, p])).values());
         setProducts(

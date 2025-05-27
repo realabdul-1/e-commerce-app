@@ -11,9 +11,13 @@ export default function ProductList() {
   const [sortOpt, setSortOpt] = useState("default");
   const [catFilter, setCatFilter] = useState("all");
 
+  const API_BASE =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:5000'
+    : 'https://your-backend.onrender.com';
   useEffect(() => {
     axios
-      .get("https://e-commerce-app-navy-tau.vercel.app/api/products")
+      .get(`${API_BASE}/api/products`)
       .then((res) => {
         setProducts(res.data);
         setFiltered(res.data);
