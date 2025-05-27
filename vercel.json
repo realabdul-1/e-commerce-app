@@ -4,7 +4,7 @@
     { 
       "src": "backend/app.py",
       "use": "@vercel/python",
-      "config": { 
+      "config": {
         "maxLambdaSize": "15mb",
         "includeFiles": "backend/**"
       }
@@ -13,14 +13,14 @@
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "outputDirectory": "frontend"
+        "outputDirectory": "frontend/build"
       }
     }
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/backend/app.py" },
-    { "src": "/static/(.*)", "dest": "/frontend/static/$1" },
+    { "src": "/static/(.*)", "dest": "/frontend/build/static/$1" },
     { "src": "/products/(.*)", "dest": "/frontend/products/$1" },
-    { "src": "/(.*)", "dest": "/frontend/index.html" }
+    { "src": "/(.*)", "dest": "/frontend/build/index.html" }
   ]
 }
