@@ -12,7 +12,7 @@ export default function Home() {
   const API_BASE =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:5000'
-    : 'https://your-backend.onrender.com';
+    : 'https://e-commerce-app-4itx.onrender.com';
 
   useEffect(() => {
     axios.get(`${API_BASE}/api/products`)
