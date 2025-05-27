@@ -3,3 +3,4 @@ flask-cors
 pg8000
 python-dotenv
 gunicorn
+psycopg2-binary
