@@ -5,6 +5,7 @@ import psycopg2
 import os
 import logging
 from dotenv import load_dotenv
+import pg8000
 
 # Load environment variables
 env_path = Path('.') / '.env'
@@ -28,15 +29,15 @@ logger = logging.getLogger(__name__)
 def get_db_connection():
     """Create and return a secure database connection."""
     try:
-        conn = psycopg2.connect(
-            host=os.getenv("DB_HOST"),
-            database=os.getenv("DB_NAME"),
-            user=os.getenv("DB_USER"),
-            password=os.getenv("DB_PASS"),
-            port=os.getenv("DB_PORT", 5432),
-            sslmode='require',
-            connect_timeout=10
-        )
+        conn = pg8000.connect(
+        host=os.getenv("DB_HOST"),
+        database=os.getenv("DB_NAME"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASS"),
+        port=int(os.getenv("DB_PORT", 5432)),
+        ssl=True,
+        timeout=10
+    )
         logger.info("Successfully connected to database")
         return conn
     except psycopg2.OperationalError as e:
