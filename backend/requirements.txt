@@ -2,3 +2,4 @@ Flask>=2.0
 flask-cors
 pg8000
 python-dotenv
+gunicorn
